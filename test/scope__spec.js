@@ -2,6 +2,9 @@
 /* global Scope: false */
 'use strict';
 
+var Scope = require('../src/scope');
+var _ = require('lodash');
+
 describe("Scope", function () {
   it("can be constructed and used as an object", function () {
     var scope = new Scope();

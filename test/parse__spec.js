@@ -1,6 +1,7 @@
 /* jshint globalstrict: true */
 /* global parse: false */
 'use strict';
+var parse = require('../src/parse');
 
 describe("parse", function() {
 

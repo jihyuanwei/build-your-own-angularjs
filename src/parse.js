@@ -1,5 +1,6 @@
 /* jshint globalstrict: true*/
 'use strict';
+var _ = require('lodash');
 var ESCAPES = {'n':'\n', 'f':'\f', 'r':'\r', 't':'\t',
   'v':'\v', '\'':'\'', '"':'"' };
 
@@ -308,3 +309,5 @@ function parse(expr) {
   var parser = new Parser(lexer);
   return parser.parse(expr);
 }
+
+module.exports = parse;
