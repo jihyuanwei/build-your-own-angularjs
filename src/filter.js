@@ -21,4 +21,4 @@ function filter(name) {
 
 register('filter', require('./filter_filter'));
 
-module.exports = {register: register, filter: filter}
+module.exports = {register: register, filter: filter};

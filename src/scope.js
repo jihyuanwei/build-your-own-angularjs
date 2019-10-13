@@ -1,6 +1,7 @@
 /* jshint globalstrict: true*/
 'use strict';
 var _ = require('lodash');
+var parse = require('./parse');
 
  function isArrayLike(obj) {
   if (_.isNull(obj) || _.isUndefined(obj)) {
@@ -30,6 +31,13 @@ function initWatchVal() { }
 
 Scope.prototype.$watch = function (watchFn, listenerFn, valueEq) {
   var self = this;
+
+  watchFn = parse(watchFn);
+
+  if (watchFn.$$watchDelegate) {
+    return watchFn.$$watchDelegate(self, listenerFn, valueEq, watchFn);
+  }
+
   var watcher = {
     watchFn: watchFn,
     listenerFn: listenerFn || function () { },
@@ -86,7 +94,7 @@ Scope.prototype.$digest = function () {
 };
 
 Scope.prototype.$eval = function (expr, locals) {
-  return expr(this, locals);
+  return parse(expr)(this, locals);
 };
 
 Scope.prototype.$apply = function (expr) {
@@ -228,6 +236,8 @@ Scope.prototype.$watchCollection = function (watchFn, listenerFn) {
   var trackVeryOldValue = (listenerFn.length > 1); //length of arguments
   var changeCount = 0;
   var firstRun = true;
+  
+  watchFn = parse(watchFn);
   var internalWatchFn = function (scope) {
     var newLength;
     newValue = watchFn(scope);
