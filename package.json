@@ -17,6 +17,7 @@
     },
     "scripts": {
         "lint": "jshint src test",
-        "test": "karma start"
+        "test": "karma start",
+        "jasmine": "jasmine test/**/*.js"
     }
 }
