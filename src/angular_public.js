@@ -11,6 +11,10 @@ function publishExternalAPI() {
   ngModule.provider('$rootScope', require('./scope'));
   ngModule.provider('$q', require('./q').$QProvider);
   ngModule.provider('$$q', require('./q').$$QProvider);
+  ngModule.provider('$httpBackend', require('./http_backend'));
+  ngModule.provider('$http', require('./http').$HttpProvider);
+  ngModule.provider('$httpParamSerializer', require('./http').$HttpParamSerializerProvider);
+  ngModule.provider('$httpParamSerializerJQLike', require('./http').$HttpParamSerializerJQLikeProvider);
 }
 
 module.exports = publishExternalAPI;
