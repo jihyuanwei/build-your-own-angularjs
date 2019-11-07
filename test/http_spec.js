@@ -1122,5 +1122,5 @@ describe('$http', function () {
 
       expect(resolveSpy).toHaveBeenCalled();
     });
-  })
+  });
 });
